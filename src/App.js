@@ -5,13 +5,16 @@ function App() {
   const { loginWithPopup, logout, isAuthenticated, user } = useAuth0();
 
   return (
-    <div>
-      <button onClick={() => loginWithPopup()}>Log In</button>
-      <button onClick={() => logout({ returnTo: window.location.origin })}>
-        Log Out
-      </button>
-      {isAuthenticated && <div>{`Authenticated for ${user.nickname}`}</div>}
-    </div>
+    <>
+      <header>
+        <button onClick={() => loginWithPopup()}>Log In</button>
+        <button onClick={() => logout({ returnTo: window.location.origin })}>
+          Log Out
+        </button>
+        {isAuthenticated && <div>{`Authenticated for ${user.nickname}`}</div>}
+      </header>
+      <main>test</main>
+    </>
   );
 }
 
