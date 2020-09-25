@@ -31,7 +31,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom-sixteen",
     "eject": "react-scripts eject",
     "server": "nodemon --exec babel-node ./server/index.js"
   },
@@ -51,6 +51,8 @@
     ]
   },
   "devDependencies": {
-    "@babel/node": "^7.10.5"
+    "@babel/node": "^7.10.5",
+    "axios-mock-adapter": "^1.18.2",
+    "jest-environment-jsdom-sixteen": "^1.0.3"
   }
 }
