@@ -1,4 +1,4 @@
-import { parseString } from "xml2js";
+const { parseString } = require("xml2js");
 
 const parseRssData = (data) => {
   const trailers = [];
@@ -14,4 +14,4 @@ const parseRssData = (data) => {
   return trailers;
 };
 
-export default parseRssData;
+module.exports = parseRssData;
