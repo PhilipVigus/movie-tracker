@@ -1,10 +1,8 @@
-import { json } from "express";
-
-var parseString = require("xml2js").parseString;
+import { parseString } from "xml2js";
 
 const parseRssData = (data) => {
   const trailers = [];
-  parseString(data, function (err, result) {
+  parseString(data, (err, result) => {
     const trailersAsJson = result.rss.channel[0].item;
 
     trailersAsJson.forEach((trailer) => {
