@@ -1,6 +1,6 @@
 import Axios from "axios";
 import MockAdapter from "axios-mock-adapter";
-import getRssData from "../../functions/getRssData";
+import getRssData from "../../utils/getRssData";
 import rssTestData from "./fixtures/rssTestData";
 
 Axios.defaults.adapter = require("axios/lib/adapters/http");

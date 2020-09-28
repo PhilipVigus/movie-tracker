@@ -1,4 +1,4 @@
-const getRssData = require("./getRssData");
+const getRssData = require("../utils/getRssData");
 
 exports.handler = async (event) => {
   console.log(process.env.NODE_ENV);

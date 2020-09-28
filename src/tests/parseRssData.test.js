@@ -1,4 +1,4 @@
-import parseRssData from "../../functions/parseRssData";
+import parseRssData from "../../utils/parseRssData";
 import rssTestData from "./fixtures/rssTestData";
 
 describe("parseRssData", () => {
