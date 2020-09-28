@@ -33,8 +33,13 @@ function App() {
   return (
     <>
       <header>
-        <button onClick={() => loginWithPopup()}>Log In</button>
-        <button onClick={() => logout({ returnTo: window.location.origin })}>
+        <button type="button" onClick={() => loginWithPopup()}>
+          Log In
+        </button>
+        <button
+          type="button"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
           Log Out
         </button>
         {isAuthenticated && <div>{`Authenticated for ${user.nickname}`}</div>}
