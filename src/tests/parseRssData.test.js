@@ -7,14 +7,18 @@ describe("parseRssData", () => {
       {
         guid: "http://www.traileraddict.com/another-round-druk/trailer",
         title: "Another Round: Trailer",
-        link: "http://www.traileraddict.com/another-round-druk/trailer"
+        link: "http://www.traileraddict.com/another-round-druk/trailer",
+        image:
+          "http://cdn.traileraddict.com/vidog/studiocanal/druk-poster/1.jpg"
       },
       {
         title: "Antebellum: TV Spot - Don't Give Away the Twist",
         guid:
           "http://www.traileraddict.com/antebellum-2020/tv-spot-dont-give-away-the-twist",
         link:
-          "http://www.traileraddict.com/antebellum-2020/tv-spot-dont-give-away-the-twist"
+          "http://www.traileraddict.com/antebellum-2020/tv-spot-dont-give-away-the-twist",
+        image:
+          "http://cdn.traileraddict.com/vidog/lionsgate/antebellum-2020-poster/1.jpg"
       }
     ];
 
