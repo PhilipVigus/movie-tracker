@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const populateDbWithTrailers = async (trailers) => {
   let uri;
-
+  console.log("here");
+  console.log(trailers);
   if (process.env.NODE_ENV === "dev") {
     uri = "mongodb://127.0.0.1/movie-tracker-dev";
   } else if (process.env.NODE_ENV === "test") {
@@ -21,7 +22,12 @@ const populateDbWithTrailers = async (trailers) => {
   dbConnection.model(
     "Trailer",
     new mongoose.Schema({
+      guid: String,
       title: String,
+      date: String,
+      link: String,
+      image: String,
+      tags: String,
     })
   );
 
