@@ -4,8 +4,15 @@ import rssTestData from "./fixtures/rssTestData";
 describe("parseRssData", () => {
   it("parses the RssData", () => {
     const expectedResult = [
-      { title: "Another Round: Trailer" },
-      { title: "Antebellum: TV Spot - Don't Give Away the Twist" }
+      {
+        guid: "http://www.traileraddict.com/another-round-druk/trailer",
+        title: "Another Round: Trailer"
+      },
+      {
+        title: "Antebellum: TV Spot - Don't Give Away the Twist",
+        guid:
+          "http://www.traileraddict.com/antebellum-2020/tv-spot-dont-give-away-the-twist"
+      }
     ];
 
     expect(parseRssData(rssTestData)).toEqual(expectedResult);

@@ -7,6 +7,7 @@ const parseRssData = (data) => {
 
     trailersAsJson.forEach((trailer) => {
       trailers.push({
+        guid: trailer.guid[0],
         title: trailer.title[0],
       });
     });
