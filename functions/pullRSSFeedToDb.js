@@ -1,4 +1,3 @@
-const { parse } = require("graphql");
 const getRssData = require("../utils/getRssData");
 const parseRssData = require("../utils/parseRssData");
 const populateDbWithTrailers = require("../utils/populateDbWithTrailers");
