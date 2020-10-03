@@ -1,9 +1,13 @@
+const { parse } = require("graphql");
 const getRssData = require("../utils/getRssData");
+const parseRssData = require("../utils/parseRssData");
+const populateDbWithTrailers = require("../utils/populateDbWithTrailers");
 
 exports.handler = async (event) => {
-  console.log(process.env.NODE_ENV);
-  console.log("here");
-  await getRssData();
+  const rssData = await getRssData();
+  const parsedData = parseRssData(rssData.data);
+  await populateDbWithTrailers(parsedData);
+
   return {
     statusCode: 200,
     body: JSON.stringify({
