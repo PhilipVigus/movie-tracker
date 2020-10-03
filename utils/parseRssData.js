@@ -9,6 +9,7 @@ const parseRssData = (data) => {
       trailers.push({
         guid: trailer.guid[0],
         title: trailer.title[0],
+        link: trailer.link[0],
       });
     });
   });
