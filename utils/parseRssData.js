@@ -15,7 +15,7 @@ const parseRssData = (data) => {
         date: trailer.pubDate[0],
         link: trailer.link[0],
         image: imageLink,
-        tags,
+        tags
       });
     });
   });
