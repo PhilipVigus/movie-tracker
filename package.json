@@ -32,10 +32,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom-sixteen",
+    "test:react": "react-scripts test --env=jsdom-sixteen",
     "eject": "react-scripts eject",
     "server": "nodemon --exec babel-node ./server/index.js",
-    "eslint": "npx eslint src/ server/ functions/"
+    "eslint": "npx eslint src/ server/ functions/",
+    "test:functions": "jest ./functions.tests"
   },
   "eslintConfig": {
     "extends": "react-app"

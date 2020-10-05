@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import populateDbWithTrailers from "../../utils/populateDbWithTrailers";
+import populateDbWithTrailers from "../utils/populateDbWithTrailers";
 
 describe("populateDbWithTrailers", () => {
   it("populates the database with trailers", async () => {

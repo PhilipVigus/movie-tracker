@@ -1,6 +1,6 @@
-const getRssData = require("../utils/getRssData");
-const parseRssData = require("../utils/parseRssData");
-const populateDbWithTrailers = require("../utils/populateDbWithTrailers");
+const getRssData = require("./utils/getRssData");
+const parseRssData = require("./utils/parseRssData");
+const populateDbWithTrailers = require("./utils/populateDbWithTrailers");
 
 exports.handler = async (event) => {
   const rssData = await getRssData();
@@ -11,7 +11,7 @@ exports.handler = async (event) => {
     statusCode: 200,
     body: JSON.stringify({
       message: "Hi ⊂◉‿◉つ",
-      event,
-    }),
+      event
+    })
   };
 };
