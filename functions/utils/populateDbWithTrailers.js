@@ -23,7 +23,6 @@ const populateDbWithTrailers = async (trailers) => {
   dbConnection.model("Trailer", TrailerSchema);
 
   const trailerModel = dbConnection.model("Trailer");
-  console.log(trailers);
 
   try {
     await trailerModel.insertMany(trailers, { ordered: false });
