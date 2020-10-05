@@ -1,32 +1,80 @@
 import mongoose from "mongoose";
+import TrailerSchema from "../../server/models/Trailer";
 import populateDbWithTrailers from "../utils/populateDbWithTrailers";
 
 describe("populateDbWithTrailers", () => {
-  it("populates the database with trailers", async () => {
-    const uri = "mongodb://127.0.0.1/movie-tracker-test";
+  const trailerData = [
+    {
+      _id: "guid1",
+      title: "Trailer1",
+      date: "date1",
+      link: "link1",
+      image: "image1",
+      tags: "tags1"
+    },
+    {
+      _id: "guid2",
+      title: "Trailer2",
+      date: "date2",
+      link: "link2",
+      image: "image2",
+      tags: "tags2"
+    }
+  ];
 
-    const dbConnection = await mongoose.createConnection(uri, {
+  const uri = "mongodb://127.0.0.1/movie-tracker-test";
+  let dbConnection;
+  let trailerModel;
+
+  beforeEach(async () => {
+    dbConnection = await mongoose.createConnection(uri, {
       bufferCommands: false,
       bufferMaxEntries: 0,
       useNewUrlParser: true,
       useUnifiedTopology: true
     });
 
-    dbConnection.model(
-      "Trailer",
-      new mongoose.Schema({
-        title: String
-      })
-    );
+    dbConnection.model("Trailer", TrailerSchema);
+    trailerModel = dbConnection.model("Trailer");
+  });
 
-    const trailerModel = dbConnection.model("Trailer");
-    const trailerData = [{ title: "Trailer 1" }, { title: "Trailer 2" }];
+  afterEach(async () => {
+    await trailerModel.deleteMany({});
+  });
 
+  afterAll(async () => {
+    await dbConnection.close();
+  });
+
+  it("populates the database with trailers", async () => {
     await populateDbWithTrailers(trailerData);
     const trailers = await trailerModel.find();
     expect(trailers.length).toEqual(2);
+  });
 
-    await trailerModel.deleteMany({});
-    await mongoose.disconnect();
+  it("prevents duplicate trailers from being added", async () => {
+    const newTrailerData = [
+      {
+        _id: "guid1",
+        title: "Trailer1",
+        date: "date1",
+        link: "link1",
+        image: "image1",
+        tags: "tags1"
+      },
+      {
+        _id: "guid3",
+        title: "Trailer3",
+        date: "date3",
+        link: "link3",
+        image: "image3",
+        tags: "tags3"
+      }
+    ];
+    await populateDbWithTrailers(trailerData);
+    await populateDbWithTrailers(newTrailerData);
+
+    const trailers = await trailerModel.find();
+    expect(trailers.length).toEqual(3);
   });
 });

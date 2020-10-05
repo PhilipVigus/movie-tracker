@@ -1,3 +1,4 @@
+import { transform } from "@babel/core";
 import mongoose from "mongoose";
 import TrailerSchema from "../../server/models/Trailer";
 
@@ -22,7 +23,16 @@ const populateDbWithTrailers = async (trailers) => {
   dbConnection.model("Trailer", TrailerSchema);
 
   const trailerModel = dbConnection.model("Trailer");
-  await trailerModel.insertMany(trailers, { ordered: false });
+  console.log(trailers);
+
+  try {
+    await trailerModel.insertMany(trailers, { ordered: false });
+  } catch (e) {
+    // errors on duplicate ids
+    // this is okay, as the RSS feed is often going to send
+    // the same trailers on consecutive days so we just
+    // ignore the duplicates
+  }
 };
 
 module.exports = populateDbWithTrailers;
