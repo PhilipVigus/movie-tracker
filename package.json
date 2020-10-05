@@ -36,7 +36,7 @@
     "eject": "react-scripts eject",
     "server": "nodemon --exec babel-node ./server/index.js",
     "eslint": "npx eslint src/ server/ functions/",
-    "test:functions": "jest ./functions.tests"
+    "test:functions": "jest --watchAll --env=node ./functions.tests"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -66,6 +66,7 @@
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-react-redux": "^3.3.0",
     "jest-environment-jsdom-sixteen": "^1.0.3",
+    "jest-environment-node": "^26.3.0",
     "prettier": "^2.1.2"
   }
 }
