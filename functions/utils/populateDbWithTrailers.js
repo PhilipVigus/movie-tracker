@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import TrailerSchema from "../../server/models/Trailer";
 
 const populateDbWithTrailers = async (trailers) => {
   let uri;
-  console.log("here");
-  console.log(trailers);
+
   if (process.env.NODE_ENV === "dev") {
     uri = "mongodb://127.0.0.1/movie-tracker-dev";
   } else if (process.env.NODE_ENV === "test") {
@@ -16,20 +16,10 @@ const populateDbWithTrailers = async (trailers) => {
     bufferCommands: false,
     bufferMaxEntries: 0,
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
   });
 
-  dbConnection.model(
-    "Trailer",
-    new mongoose.Schema({
-      guid: String,
-      title: String,
-      date: String,
-      link: String,
-      image: String,
-      tags: String,
-    })
-  );
+  dbConnection.model("Trailer", TrailerSchema);
 
   const trailerModel = dbConnection.model("Trailer");
   await trailerModel.insertMany(trailers, { ordered: false });
