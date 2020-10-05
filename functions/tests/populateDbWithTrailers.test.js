@@ -10,7 +10,7 @@ describe("populateDbWithTrailers", () => {
       date: "date1",
       link: "link1",
       image: "image1",
-      tags: "tags1"
+      tags: [{ _id: "Tag1" }, { _id: "Tag2" }]
     },
     {
       _id: "guid2",
@@ -18,7 +18,7 @@ describe("populateDbWithTrailers", () => {
       date: "date2",
       link: "link2",
       image: "image2",
-      tags: "tags2"
+      tags: [{ _id: "Tag1" }, { _id: "Tag2" }]
     }
   ];
 
@@ -60,7 +60,7 @@ describe("populateDbWithTrailers", () => {
         date: "date1",
         link: "link1",
         image: "image1",
-        tags: "tags1"
+        tags: [{ _id: "Tag1" }, { _id: "Tag2" }]
       },
       {
         _id: "guid3",
@@ -68,7 +68,7 @@ describe("populateDbWithTrailers", () => {
         date: "date3",
         link: "link3",
         image: "image3",
-        tags: "tags3"
+        tags: [{ _id: "Tag1" }, { _id: "Tag2" }]
       }
     ];
     await populateDbWithTrailers(trailerData);
