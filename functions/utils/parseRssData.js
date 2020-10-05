@@ -10,7 +10,7 @@ const parseRssData = (data) => {
       const tags = trailer.description[0].match(/Tags: (<a.*\/a>)/)[1];
 
       trailers.push({
-        guid: trailer.guid[0],
+        _id: trailer.guid[0],
         title: trailer.title[0],
         date: trailer.pubDate[0],
         link: trailer.link[0],
