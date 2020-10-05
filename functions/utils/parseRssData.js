@@ -1,4 +1,16 @@
+const mongoose = require("mongoose");
 const { parseString } = require("xml2js");
+
+const parseTags = (tagString) => {
+  const tags = [];
+  const tagMatches = tagString.matchAll(/<a.*?>(.*?)</g);
+
+  [...tagMatches].forEach((tag) => {
+    tags.push({ id: tag[1] });
+  });
+
+  return tags;
+};
 
 const parseRssData = (data) => {
   const trailers = [];
@@ -8,14 +20,14 @@ const parseRssData = (data) => {
     trailersAsJson.forEach((trailer) => {
       const imageLink = trailer.description[0].match(/<img src="(.*)" \/>/)[1];
       const tags = trailer.description[0].match(/Tags: (<a.*\/a>)/)[1];
-
+      parseTags(tags);
       trailers.push({
-        _id: trailer.guid[0],
+        id: trailer.guid[0],
         title: trailer.title[0],
         date: trailer.pubDate[0],
         link: trailer.link[0],
         image: imageLink,
-        tags
+        tags: parseTags(tags)
       });
     });
   });

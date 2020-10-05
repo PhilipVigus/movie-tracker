@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import TrailerSchema from "../../server/models/Trailer";
+const mongoose = require("mongoose");
+const TrailerSchema = require("./TrailerSchema");
 
 const populateDbWithTrailers = async (trailers) => {
   let uri;
@@ -25,9 +25,13 @@ const populateDbWithTrailers = async (trailers) => {
 
   const results = [];
   for (const trailer of trailers) {
-    const trailerExists = await trailerModel.exists({ _id: trailer._id });
+    const trailerExists = await trailerModel.exists({ id: trailer.id });
     if (!trailerExists) {
-      results.push(trailerModel.create(trailer));
+      try {
+        await trailerModel.create(trailer);
+      } catch (e) {
+        console.log(e);
+      }
     }
   }
 

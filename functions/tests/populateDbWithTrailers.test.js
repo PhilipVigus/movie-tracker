@@ -1,24 +1,24 @@
 import mongoose from "mongoose";
-import TrailerSchema from "../../server/models/Trailer";
+const TrailerSchema = require("../utils/TrailerSchema");
 import populateDbWithTrailers from "../utils/populateDbWithTrailers";
 
 describe("populateDbWithTrailers", () => {
   const trailerData = [
     {
-      _id: "guid1",
+      id: "guid1",
       title: "Trailer1",
       date: "date1",
       link: "link1",
       image: "image1",
-      tags: [{ _id: "Tag1" }, { _id: "Tag2" }]
+      tags: [{ id: "Tag1" }, { id: "Tag2" }]
     },
     {
-      _id: "guid2",
+      id: "guid2",
       title: "Trailer2",
       date: "date2",
       link: "link2",
       image: "image2",
-      tags: [{ _id: "Tag1" }, { _id: "Tag2" }]
+      tags: [{ id: "Tag1" }, { id: "Tag2" }]
     }
   ];
 
@@ -55,20 +55,20 @@ describe("populateDbWithTrailers", () => {
   it("prevents duplicate trailers from being added", async () => {
     const newTrailerData = [
       {
-        _id: "guid1",
+        id: "guid1",
         title: "Trailer1",
         date: "date1",
         link: "link1",
         image: "image1",
-        tags: [{ _id: "Tag1" }, { _id: "Tag2" }]
+        tags: [{ id: "Tag1" }, { id: "Tag2" }]
       },
       {
-        _id: "guid3",
+        id: "guid3",
         title: "Trailer3",
         date: "date3",
         link: "link3",
         image: "image3",
-        tags: [{ _id: "Tag1" }, { _id: "Tag2" }]
+        tags: [{ id: "Tag1" }, { id: "Tag2" }]
       }
     ];
     await populateDbWithTrailers(trailerData);
