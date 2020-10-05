@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import TagSchema from "./Tag";
 
 const { Schema } = mongoose;
 
@@ -24,11 +25,7 @@ const TrailerSchema = new Schema({
     unique: false,
     required: true
   },
-  tags: {
-    type: String,
-    unique: false,
-    required: true
-  }
+  tags: [TagSchema]
 });
 
 export default TrailerSchema;
